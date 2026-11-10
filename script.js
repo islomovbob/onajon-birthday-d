@@ -31,37 +31,3 @@ if ('IntersectionObserver' in window) {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
 
-// Add the YouTube URL to the video card's data-youtube-url attribute when it arrives.
-const videoCard = document.getElementById('video-card');
-const youtubeUrl = videoCard.dataset.youtubeUrl.trim();
-
-function extractYoutubeId(value) {
-  try {
-    const url = new URL(value);
-    const hostname = url.hostname.replace(/^www\./, '').replace(/^m\./, '');
-    let id = '';
-
-    if (hostname === 'youtu.be') {
-      id = url.pathname.split('/')[1];
-    } else if (hostname === 'youtube.com' || hostname === 'youtube-nocookie.com') {
-      id = url.searchParams.get('v') || url.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)?.[1] || '';
-    }
-
-    return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null;
-  } catch {
-    return null;
-  }
-}
-
-const videoId = extractYoutubeId(youtubeUrl);
-if (videoId) {
-  const frame = document.createElement('iframe');
-  frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`;
-  frame.title = 'Видео-поздравление для ONAJON';
-  frame.loading = 'lazy';
-  frame.referrerPolicy = 'strict-origin-when-cross-origin';
-  frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-  frame.allowFullscreen = true;
-  videoCard.replaceChildren(frame);
-  document.querySelector('.video-section__intro').textContent = 'Нажми на видео и принимай поздравления!';
-}
