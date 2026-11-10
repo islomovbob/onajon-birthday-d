@@ -16,8 +16,8 @@
     />
     <title>С днём рождения, ONAJON!</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="stylesheet" href="./styles.css?v=video-1" />
-    <script src="./script.js?v=video-1" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=video-2" />
+    <script src="./script.js?v=video-2" defer></script>
   </head>
   <body>
     <main>
@@ -140,15 +140,20 @@
           <p class="eyebrow reveal">И ещё один сюрприз</p>
           <h2 class="reveal" id="video-title">Для тебя есть<br /><em>видео-поздравление</em></h2>
           <p class="video-section__intro reveal">Нажми на видео и принимай поздравления!</p>
-          <div class="video-card reveal" id="video-card">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/wGTiO219RA4?rel=0&amp;controls=0&amp;iv_load_policy=3&amp;playsinline=1"
-              title="Видео-поздравление для ONAJON"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="video-card reveal" id="video-card" data-video-id="wGTiO219RA4">
+            <a
+              class="video-card__cover"
+              href="https://www.youtube.com/shorts/wGTiO219RA4"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Смотреть видео-поздравление для ONAJON"
+            >
+              <img src="./cover.png" alt="" loading="lazy" decoding="async" />
+              <span class="video-card__play" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="m12 8 13 8-13 8z" fill="currentColor" /></svg>
+              </span>
+              <span class="video-card__caption" aria-hidden="true">Смотреть поздравление</span>
+            </a>
           </div>
           <p class="video-section__closing reveal">Обнимаем тебя крепко ♡</p>
         </div>
