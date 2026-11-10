@@ -311,6 +311,65 @@ a { color: inherit; }
   overflow: hidden;
 }
 
+.video-card__cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 19px;
+  overflow: hidden;
+  color: #fff;
+  background: #25152f;
+  text-decoration: none;
+}
+
+.video-card__cover::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28, 11, 35, .05) 35%, rgba(28, 11, 35, .55));
+  content: "";
+  pointer-events: none;
+}
+
+.video-card__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-card__play {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: clamp(68px, 18vw, 92px);
+  height: clamp(68px, 18vw, 92px);
+  border: 2px solid rgba(255,255,255,.88);
+  border-radius: 50%;
+  background: rgba(69, 33, 75, .46);
+  box-shadow: 0 14px 36px rgba(29, 11, 39, .35);
+  backdrop-filter: blur(8px);
+  transition: transform .25s ease, background .25s ease;
+}
+
+.video-card__play svg { width: 42%; height: 42%; margin-left: 5px; }
+.video-card__cover:hover .video-card__play { transform: scale(1.08); background: rgba(69, 33, 75, .62); }
+.video-card__cover:focus-visible { outline: 4px solid #ffd5ad; outline-offset: -8px; }
+
+.video-card__caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.6rem;
+  left: 1rem;
+  right: 1rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .45);
+}
+
 .video-card iframe { display: block; width: 100%; height: 100%; border: 0; border-radius: 19px; background: #25152f; }
 .video-section__closing { margin-top: 2.6rem; font-family: Georgia, serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-style: italic; }
 
@@ -360,7 +419,7 @@ a { color: inherit; }
   .video-section h2 { font-size: clamp(2.6rem, 10.8vw, 4rem); }
   .video-section__intro { margin-bottom: 2rem; }
   .video-card { padding: 5px; border-radius: 18px; }
-  .video-card iframe { border-radius: 13px; }
+  .video-card__cover, .video-card iframe { border-radius: 13px; }
   .video-section__closing { margin-top: 2rem; }
 }
 
