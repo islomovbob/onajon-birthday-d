@@ -31,3 +31,21 @@ if ('IntersectionObserver' in window) {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
 
+const videoCard = document.getElementById('video-card');
+const videoCover = videoCard?.querySelector('.video-card__cover');
+
+videoCover?.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const videoId = videoCard.dataset.videoId;
+  if (!/^[a-zA-Z0-9_-]{11}$/.test(videoId)) return;
+
+  const frame = document.createElement('iframe');
+  frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&controls=0&iv_load_policy=3&playsinline=1&autoplay=1`;
+  frame.title = 'Видео-поздравление для ONAJON';
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  frame.allowFullscreen = true;
+  videoCard.replaceChildren(frame);
+});
+
